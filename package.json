@@ -1,0 +1,19 @@
+{
+  "name": "choodo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"budo index.js:bundle.js -p 3000 --no-debug -- -b bundle-collapser/plugin -g unassertify -g yo-yoify -g uglifyify"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "budo": "^10.0.4",
+    "bundle-collapser": "^1.3.0",
+    "choo": "^6.6.0",
+    "uglifyify": "^4.0.5",
+    "unassertify": "^2.1.0",
+    "yo-yoify": "^4.2.0"
+  }
+}
