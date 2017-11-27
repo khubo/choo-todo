@@ -1,7 +1,8 @@
-var html = require('choo/html');
-var animal = require('./animal.js');
+import html from 'choo/html';
+import animalView from './animal'
+import img_background from 'images/bg.gif'
 
-module.exports = function (state, emit) {
+export default function (state, emit) {
     function animalMap(animalObj, i) {
         // params refers to URL params from Router
         var filterToType = state.params.type;
@@ -11,7 +12,7 @@ module.exports = function (state, emit) {
             // then do nothing
             return;
         } else {
-            return animal(removeAnimal, animalObj, i);
+            return animalView(removeAnimal, animalObj, i);
         }
     }
 
@@ -32,7 +33,8 @@ module.exports = function (state, emit) {
     return html `
         <div class="container">
             <div class="grass">
-                <img src="/assets/images/bg.gif"
+                <img 
+                    src="${img_background}"
                     alt="background"
                     onclick=${addNewAnimal}
                 />
@@ -42,11 +44,11 @@ module.exports = function (state, emit) {
             <div class="controls">
                 <ul class="filters">
                 <li><a href="/">all</a></li>
-                <li><a href="/filter/crocodile">crocodiles</a></li>
-                <li><a href="/filter/koala">koalas</a></li>
-                <li><a href="/filter/lion">lions</a></li>
-                <li><a href="/filter/tiger">tigers</a></li>
-                <li><a href="/filter/walrus">walruses</a></li>
+                <li><a href="#filter/crocodile">crocodiles</a></li>
+                <li><a href="#filter/koala">koalas</a></li>
+                <li><a href="#filter/lion">lions</a></li>
+                <li><a href="#filter/tiger">tigers</a></li>
+                <li><a href="#filter/walrus">walruses</a></li>
                 </ul>
             </div>
         </div>

@@ -1,4 +1,4 @@
-module.exports = animalStore;
+//module.exports = animalStore;
 
 var animalTypes = ['crocodile', 'koala', 'lion', 'tiger', 'walrus']
 function getRandomAnimal ( ) {
@@ -6,7 +6,7 @@ function getRandomAnimal ( ) {
     return animalTypes[randomType];
 }
 
-function animalStore(state, emitter) {
+export default function (state, emitter) {
     state.animals = [
         {
             type: 'lion',
