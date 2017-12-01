@@ -1,12 +1,6 @@
-//module.exports = animalStore;
+import {getRandomAnimal} from "../helpers/animalHelper";
 
-var animalTypes = ['crocodile', 'koala', 'lion', 'tiger', 'walrus']
-function getRandomAnimal ( ) {
-    var randomType = (Math.floor(Math.random() * 5))
-    return animalTypes[randomType];
-}
-
-export default function (state, emitter) {
+export function animalStore(state, emitter) {
     state.animals = [
         {
             type: 'lion',
@@ -25,7 +19,7 @@ export default function (state, emitter) {
         emitter.emit('render');
     });
 
-    emitter.on('removeAnimal', function(i){
+    emitter.on('removeAnimal', function (i) {
         state.animals.splice(i, 1);
         emitter.emit('render');
     });

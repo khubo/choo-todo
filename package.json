@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Choo Animals tutorial output, modified to use Webpack and ES6 style import/exports",
   "scripts": {
-    "build": "webpack --progress",
+    "start": "npm run dev",
     "dev": "webpack --progress && webpack-dev-server -d --hot --config webpack.config.js --watch",
+    "build": "webpack --progress",
     "production": "SET NODE_ENV=production & webpack -p"
   },
   "author": "Philip Gannon <fiddlydigital@gmail.com> (https://fiddlydigital.github.io/)" ,

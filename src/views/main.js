@@ -1,15 +1,11 @@
 import html from 'choo/html';
-import animalView from './animal'
+import {animalView} from './animal'
 import img_background from 'images/bg.gif'
 
-export default function (state, emit) {
+export function mainView(state, emit) {
     function animalMap(animalObj, i) {
-        // params refers to URL params from Router
         var filterToType = state.params.type;
         if (filterToType && filterToType !== animalObj.type) {
-            // if we're filtering AND this animal is 
-            // not of the type to be filtered - 
-            // then do nothing
             return;
         } else {
             return animalView(removeAnimal, animalObj, i);
@@ -19,13 +15,13 @@ export default function (state, emit) {
     function addNewAnimal(e) {
         if (e) {
             emit('addNewAnimal', {
-                x: e.offsetX -20,
-                y: e.offsetY -10
+                x: e.offsetX - 20,
+                y: e.offsetY - 10
             });
         }
     }
 
-    function removeAnimal(e){
+    function removeAnimal(e) {
         var index = e.target.id;
         emit('removeAnimal', index);
     }
