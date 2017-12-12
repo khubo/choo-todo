@@ -3,6 +3,7 @@ const path = require('path');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
+const WorkBoxPlugin = require('workbox-webpack-plugin');
 
 let config = {
     devServer: {
@@ -56,7 +57,17 @@ let config = {
         path: path.resolve(__dirname, './public'),
         filename: 'output.js'
     },
-    plugins: [new ExtractTextWebpackPlugin('styles.css')],
+    plugins: [
+        new ExtractTextWebpackPlugin('styles.css'),
+        // https://developers.google.com/web/tools/workbox/get-started/webpack
+        // See init code in src/index.js
+        new WorkBoxPlugin({
+            globDirectoy: 'public',
+            globPatterns: ['**/*.{html,js,css,gif}'],
+            swDest: path.join('public','sw.js'),
+            clientsClaim: true,     // instructs the latest service worker to take control of all clients as soon as it's activated
+            skipWaiting: true       // instructs the latest service worker to activate as soon as it enters the waiting phase
+        })],
     resolve: {
         extensions: [
             '.js',
