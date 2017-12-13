@@ -4,7 +4,7 @@ I wanted to take the choo.js starter application (here: https://handbook.choo.io
 
 This is by no means a 'gold standard' project - but there should be enough here to get you going if you're serious about ES6, Webpack and Choo.Js
 
-Files in the src folder will be processed on build and put into the public folder. Don't delete the index.html in the public folder!
+Files in the src folder will be processed on build and put into the public folder.
 
 ## Current Features:
 
@@ -24,5 +24,3 @@ Features Hot Reloading
 ```
 npm run production
 ```
-
-
