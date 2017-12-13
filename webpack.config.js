@@ -3,6 +3,7 @@ const path = require('path');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WorkBoxPlugin = require('workbox-webpack-plugin');
 
 let config = {
@@ -58,6 +59,10 @@ let config = {
         filename: 'output.js'
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'src/index.html'
+        }),
         new ExtractTextWebpackPlugin('styles.css'),
         // https://developers.google.com/web/tools/workbox/get-started/webpack
         // See init code in src/index.js
