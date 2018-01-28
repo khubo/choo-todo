@@ -22,7 +22,7 @@ let config = {
                 exclude: /node_modules/,
                 loader: "babel-loader"
             }, {
-                test: /\.scss$/, // files ending with .scss
+                test: /\.s[a|c]ss$/, // files ending with .scss
                 use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
                     fallback: 'style-loader',
                     use: ['css-loader', 'sass-loader', 'postcss-loader']

@@ -16,6 +16,7 @@
     "es6"
   ],
   "dependencies": {
+    "bulma": "^0.6.2",
     "choo": "^6.6.0"
   },
   "devDependencies": {

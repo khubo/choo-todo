@@ -1,52 +1,25 @@
-import html from 'choo/html';
-import {animalView} from './animal'
-import img_background from 'images/bg.gif'
+import html from 'choo/html'
+import inputTodo from './inputTodo'
+import showTodos from './showTodo'
 
 export function mainView(state, emit) {
-    function animalMap(animalObj, i) {
-        var filterToType = state.params.type;
-        if (filterToType && filterToType !== animalObj.type) {
-            return;
-        } else {
-            return animalView(removeAnimal, animalObj, i);
-        }
-    }
-
-    function addNewAnimal(e) {
-        if (e) {
-            emit('addNewAnimal', {
-                x: e.offsetX - 20,
-                y: e.offsetY - 10
-            });
-        }
-    }
-
-    function removeAnimal(e) {
-        var index = e.target.id;
-        emit('removeAnimal', index);
-    }
-
-    return html `
-        <div class="container">
-            <div class="grass">
-                <img 
-                    src="${img_background}"
-                    alt="background"
-                    onclick=${addNewAnimal}
-                />
-                ${state.animals.map(animalMap)}
-            </div>
-
-            <div class="controls">
-                <ul class="filters">
-                <li><a href="/">all</a></li>
-                <li><a href="#filter/crocodile">crocodiles</a></li>
-                <li><a href="#filter/koala">koalas</a></li>
-                <li><a href="#filter/lion">lions</a></li>
-                <li><a href="#filter/tiger">tigers</a></li>
-                <li><a href="#filter/walrus">walruses</a></li>
-                </ul>
-            </div>
+    
+    return html`
+    <div>
+    <h1> Todo </h1>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col"> </div>
+        <div class="mdl-cell mdl-cell--4-col">  
+            ${inputTodo(addTodo)}
+            ${showTodos(state.todos)}
         </div>
+        <div class="mdl-cell mdl-cell--4-col"> </div>
+    </div>
+    </div>
     `
+
+    function addTodo(todo) {
+      console.log('here also')
+      emit('addTodo', todo)
+    }
 }
