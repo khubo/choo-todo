@@ -1,5 +1,6 @@
 const store  = (state, emitter) => {
   state.todos = []
+  state.state = 'all'
 
   emitter.on('addTodo', (todo) => {
 
@@ -15,6 +16,10 @@ const store  = (state, emitter) => {
     emitter.emit('render')
   })
 
+  emitter.on('changeState', newState => {
+    state.state = newState
+    emitter.emit('render')
+  })
 }
 
 export default store
