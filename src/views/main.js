@@ -8,18 +8,21 @@ export function mainView(state, emit) {
     <div>
     <h1> Todo </h1>
     <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--4-col"> </div>
-        <div class="mdl-cell mdl-cell--4-col">  
+        <div class="mdl-cell mdl-cell--2-col"> </div>
+        <div class="mdl-cell mdl-cell--8-col">  
             ${inputTodo(addTodo)}
-            ${showTodos(state.todos)}
+            ${showTodos(state.todos, toggleTodo)}
         </div>
-        <div class="mdl-cell mdl-cell--4-col"> </div>
+        <div class="mdl-cell mdl-cell--2-col"> </div>
     </div>
     </div>
     `
 
     function addTodo(todo) {
-      console.log('here also')
       emit('addTodo', todo)
+    }
+
+    function toggleTodo(index) {
+        emit('toggleTodo', index)
     }
 }
